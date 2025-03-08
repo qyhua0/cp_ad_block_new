@@ -5,12 +5,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const importButton = document.getElementById('importButton');
     const importFile = document.getElementById('importFile');
 
-    console.log(1,adList);
-    console.log(2,saveButton);
-    console.log(3,exportButton);
-    console.log(4,importButton);
-    console.log(5,importButton);
-  
+
+    // 设置多语言文本
+  document.querySelectorAll("[data-i18n]").forEach(element => {
+    element.textContent = chrome.i18n.getMessage(element.getAttribute("data-i18n"));
+  });
+
+
+  const placeholderKey = adList.getAttribute("data-i18n-placeholder");
+  if (placeholderKey) {
+    adList.placeholder = chrome.i18n.getMessage(placeholderKey);
+  } else {
+    console.warn("Missing data-i18n-placeholder attribute on adList");
+  }
   
     // 加载保存的广告列表
     // chrome.storage.sync.get('customAdList', (data) => {
@@ -54,7 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       chrome.storage.sync.set({ customAdList: formattedList }, () => {
         chrome.runtime.sendMessage({ action: 'updateRules', isEnabled: true });
-        alert('Ad list saved!');
+        //alert('Ad list saved!');
+        alert(chrome.i18n.getMessage("savedMessage"))
       });
 
 

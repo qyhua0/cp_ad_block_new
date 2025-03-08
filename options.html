@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Ad Blocker Options</title>
+  <title data-i18n="appName"></title>
   <style>
     body {
       width: 700px;
@@ -60,12 +60,12 @@
   </style>
 </head>
 <body>
-  <h1>Edit Ad Block List</h1>
-  <textarea id="adList" placeholder="Enter domains to block, one per line (e.g., ad1.com)"></textarea>
+  <h1 data-i18n="appName"></h1>
+  <textarea id="adList"  data-i18n-placeholder="placeholder" ></textarea>
   <div class="button-container">
-    <button id="saveButton">Save</button>
-    <button id="exportButton">Export to TXT</button>
-    <button id="importButton">Import from TXT</button>
+    <button id="saveButton" data-i18n="saveButton"></button>
+    <button id="exportButton" data-i18n="exportButton"></button>
+    <button id="importButton" data-i18n="importButton"></button>
     <input type="file" id="importFile" accept=".txt">
   </div>
   <script src="options.js"></script>

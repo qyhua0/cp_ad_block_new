@@ -1,0 +1,42 @@
+{
+    "appName": {
+      "message": "广告拦截器",
+      "description": "扩展程序名称"
+    },
+    "appDesc": {
+      "message": "一款可自定义的广告拦截工具",
+      "description": "扩展程序描述"
+    },
+    "toggleEnable": {
+      "message": "启用广告拦截",
+      "description": "启用广告拦截的文本"
+    },
+    "toggleDisable": {
+      "message": "禁用广告拦截",
+      "description": "禁用广告拦截的文本"
+    },
+    "editAdList": {
+      "message": "编辑广告列表",
+      "description": "编辑广告列表的链接"
+    },
+    "optionsTitle": {
+      "message": "编辑广告拦截列表",
+      "description": "选项页面标题"
+    },
+    "saveButton": {
+      "message": "保存",
+      "description": "保存按钮文本"
+    },
+    "exportButton": {
+      "message": "导出为TXT",
+      "description": "导出按钮文本"
+    },
+    "importButton": {
+      "message": "从TXT导入",
+      "description": "导入按钮文本"
+    },
+    "placeholder": {
+      "message": "输入要拦截的域名，每行一个域名（例如 ad1.com）",
+      "description": "文本框占位符"
+    }
+  }

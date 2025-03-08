@@ -1,0 +1,42 @@
+{
+    "appName": {
+      "message": "Ad Blocker with Toggle",
+      "description": "The name of the extension"
+    },
+    "appDesc": {
+      "message": "A customizable ad blocker",
+      "description": "The description of the extension"
+    },
+    "toggleEnable": {
+      "message": "Enable Ad Blocking",
+      "description": "Text for enabling ad blocking"
+    },
+    "toggleDisable": {
+      "message": "Disable Ad Blocking",
+      "description": "Text for disabling ad blocking"
+    },
+    "editAdList": {
+      "message": "Edit Ad List",
+      "description": "Link to edit ad list"
+    },
+    "optionsTitle": {
+      "message": "Edit Ad Block List",
+      "description": "Title for options page"
+    },
+    "saveButton": {
+      "message": "Save",
+      "description": "Save button text"
+    },
+    "exportButton": {
+      "message": "Export to TXT",
+      "description": "Export button text"
+    },
+    "importButton": {
+      "message": "Import from TXT",
+      "description": "Import button text"
+    },
+    "placeholder": {
+      "message": "Enter domains to block, one per line (ad1.com)",
+      "description": "Textarea placeholder"
+    }
+  }
