@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ad Blocker</title>
+  <style>
+    body {
+      width: 250px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      font-size: 20px;
+      color: #333;
+      margin: 0 0 15px 0;
+      text-align: center;
+    }
+    #toggleButton {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+      transition: background-color 0.3s;
+      margin-bottom: 10px;
+    }
+    #toggleButton:hover {
+      background-color: #0056b3;
+    }
+    a {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      color: #007bff;
+      text-decoration: none;
+      padding: 5px 0;
+    }
+    a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h2>Ad Blocker</h2>
+  <button id="toggleButton">Enable Ad Blocking</button>
+  <a href="options.html" target="_blank">Edit Ad List</a>
+  <script src="popup.js"></script>
+</body>
+</html>

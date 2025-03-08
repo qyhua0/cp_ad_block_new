@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Ad Blocker",
+    "version": "1.0",
+    "description": "Blocks ads on web pages",
+    "permissions": [
+        "activeTab" ,
+    "declarativeNetRequest",
+    "storage",
+    "downloads"
+],
+    "host_permissions": [
+        "<all_urls>"
+      ],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon16.png",
+        "32": "images/icon32.png",
+        "96": "images/icon96.png"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    }
+    ,
+  "options_page": "options.html"
+
+  }
