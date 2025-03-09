@@ -3,70 +3,251 @@
 <head>
   <title data-i18n="appName"></title>
   <style>
+    :root {
+      --primary-color: #5d9c59;
+      --primary-hover: #4c8048;
+      --text-color: #333;
+      --light-gray: #f7f7f7;
+      --border-color: #e0e0e0;
+      --shadow-color: rgba(0, 0, 0, 0.06);
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: var(--text-color);
+      background-color: var(--light-gray);
+    }
+
     body {
-      width: 700px;
-      padding: 20px;
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-    }
-    h1 {
-      font-size: 28px;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    #adList {
-      width: 100%;
-      height: 400px;
-      resize: vertical;
-      font-size: 16px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    .button-container {
       display: flex;
-      gap: 10px;
+      min-height: 600px; /* 设置一个最小高度 */
+      overflow: hidden;
     }
-    button {
-      padding: 12px 24px;
+
+    /* 左侧菜单栏 */
+    .sidebar {
+      width: 220px;
+      background-color: #ffffff;
+      border-right: 1px solid var(--border-color);
+      box-shadow: 2px 0 10px var(--shadow-color);
+      flex-shrink: 0; /* 防止收缩 */
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 25px 0;
+      margin: 0;
+      flex-grow: 1;
+    }
+
+    .sidebar li {
+      padding: 15px 25px;
+      cursor: pointer;
+      color: var(--text-color);
+      font-size: 16px;
+      transition: all 0.3s ease;
+      border-left: 4px solid transparent;
+    }
+
+    .sidebar li:hover {
+      background-color: rgba(93, 156, 89, 0.05);
+      border-left: 4px solid rgba(93, 156, 89, 0.3);
+    }
+
+    .sidebar li.active {
+      background-color: var(--primary-color);
+      color: white;
+      font-weight: 500;
+      border-left: 4px solid var(--primary-hover);
+    }
+
+    /* 右侧内容区域 */
+    .content {
+      flex: 1;
+      background-color: #ffffff;
+      box-shadow: 0 0 15px var(--shadow-color);
+      position: relative;
+      height: 100%;
+      overflow-y: auto; /* 允许内容区域滚动 */
+    }
+
+    .content section {
+      display: none;
+      padding: 30px;
+      box-sizing: border-box;
+      min-height: 100%;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .content section.active {
+      display: block;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: var(--text-color);
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-weight: 600;
+      border-bottom: 2px solid var(--light-gray);
+      padding-bottom: 10px;
+    }
+
+    /* 开关页面样式 */
+    #toggleButton {
+      padding: 14px 28px;
       font-size: 16px;
       border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      background-color: #007bff;
+      border-radius: 8px;
+      background-color: var(--primary-color);
       color: white;
-      transition: background-color 0.3s;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(93, 156, 89, 0.2);
+      font-weight: 500;
     }
-    button:hover {
-      background-color: #0056b3;
+
+    #toggleButton:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(93, 156, 89, 0.25);
     }
-    #exportButton {
-      background-color: #28a745;
+
+    #toggleButton:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba(93, 156, 89, 0.2);
     }
-    #exportButton:hover {
-      background-color: #218838;
+
+    /* 编辑规则页面样式 */
+    #adList {
+      width: 100%;
+      height: 300px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 15px;
+      font-size: 14px;
+      resize: vertical;
+      font-family: 'Courier New', monospace;
+      line-height: 1.5;
+      transition: border 0.3s;
+      background-color: #fcfcfc;
+      box-sizing: border-box;
     }
-    #importButton {
-      background-color: #6c757d;
+
+    #adList:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(93, 156, 89, 0.1);
     }
-    #importButton:hover {
-      background-color: #5a6268;
+
+    .button-container {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
     }
-    #importFile {
-      display: none;
+
+    .button-container button {
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      background-color: var(--primary-color);
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      box-shadow: 0 2px 4px rgba(93, 156, 89, 0.2);
+    }
+
+    .button-container button:hover {
+      background-color: var(--primary-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px rgba(93, 156, 89, 0.25);
+    }
+
+    .button-container button:active {
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(93, 156, 89, 0.2);
+    }
+
+    .tips {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #555;
+      border-left: 4px solid var(--primary-color);
+      box-shadow: 0 2px 4px var(--shadow-color);
+    }
+
+    .tips ul {
+      margin: 10px 0;
+      padding-left: 20px;
+    }
+
+    .tips li {
+      margin-bottom: 5px;
+    }
+
+    /* 关于页面样式 */
+    #about p {
+      font-size: 16px;
+      color: #555;
+      line-height: 1.8;
+      margin: 15px 0;
     }
   </style>
 </head>
 <body>
-  <h1 data-i18n="appName"></h1>
-  <textarea id="adList"  data-i18n-placeholder="placeholder" ></textarea>
-  <div class="button-container">
-    <button id="saveButton" data-i18n="saveButton"></button>
-    <button id="exportButton" data-i18n="exportButton"></button>
-    <button id="importButton" data-i18n="importButton"></button>
-    <input type="file" id="importFile" accept=".txt">
+  <div class="sidebar">
+    <ul>
+      <li data-section="toggle" class="active" data-i18n="toggleMenu">Switch</li>
+      <li data-section="edit" data-i18n="editAdList">Edit Rules</li>
+      <li data-section="about" data-i18n="aboutMenu">About</li>
+    </ul>
+  </div>
+  <div class="content">
+    <section id="toggle" class="active">
+      <h1 data-i18n="toggleMenu">Switch</h1>
+      <button id="toggleButton"></button>
+    </section>
+    <section id="edit">
+      <h1 data-i18n="editAdList">Edit Rules</h1>
+      <div class="tips">
+        <p data-i18n="editTipsIntro"></p>
+        <ul>
+          <li data-i18n="editTipsNormal"></li>
+          <li data-i18n="editTipsException"></li>
+          <li data-i18n="editTipsRegex"></li>
+        </ul>
+        <p data-i18n="editTipsAction"></p>
+      </div>
+      <textarea id="adList" data-i18n-placeholder="placeholder"></textarea>
+      <div class="button-container">
+        <button id="saveButton" data-i18n="saveButton">Save</button>
+        <button id="exportButton" data-i18n="exportButton">Export to TXT</button>
+        <button id="importButton" data-i18n="importButton">Import from TXT</button>
+        <input type="file" id="importFile" accept=".txt" style="display: none;">
+      </div>
+    </section>
+    <section id="about">
+      <h1 data-i18n="aboutMenu">About</h1>
+      <p data-i18n="aboutDescription"></p>
+      <p data-i18n="aboutContact"></p>
+    </section>
   </div>
   <script src="options.js"></script>
 </body>

@@ -38,5 +38,21 @@
     "placeholder": {
       "message": "Enter domains to block, one per line (ad1.com)",
       "description": "Textarea placeholder"
-    }
+    },
+
+
+
+
+        "toggleMenu": { "message": "Switch" },
+        "aboutMenu": { "message": "About" },
+
+        "editTipsIntro": { "message": "Enter domains to block, one per line. The following formats are supported:" },
+        "editTipsNormal": { "message": "Normal domain: e.g., ad1.com" },
+        "editTipsException": { "message": "Exception rule: starts with @@, e.g., @@analytics.itunes.apple.com" },
+        "editTipsRegex": { "message": "Regular expression: wrapped in /, e.g., /^(\\S+\\.)?counter(\\-|\\.)/" },
+        "editTipsAction": { "message": "You can import rules from a TXT file or save changes to take effect." },
+        "aboutDescription": { "message": "This is a lightweight ad blocker plugin that supports toggle control and custom rules. You can block specific domains or set exceptions to allow necessary content. Developed by qyhua, version 1.0." },
+        "aboutContact": { "message": "Questions or suggestions? Contact: email:qyhua0@hotmail.com" }
+      
+      
   }

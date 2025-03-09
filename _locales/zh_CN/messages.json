@@ -38,5 +38,20 @@
     "placeholder": {
       "message": "输入要拦截的域名，每行一个域名（例如 ad1.com）",
       "description": "文本框占位符"
-    }
+    },
+
+
+
+
+    "toggleMenu": { "message": "开关" },
+    "aboutMenu": { "message": "关于" },
+
+    "editTipsIntro": { "message": "输入要拦截的域名，每行一个。支持以下格式：" },
+    "editTipsNormal": { "message": "普通域名：例如 ad1.com" },
+    "editTipsException": { "message": "例外规则：以 @@ 开头，例如 @@analytics.itunes.apple.com" },
+    "editTipsRegex": { "message": "正则表达式：用 / 包裹，例如 /^(\\S+\\.)?counter(\\-|\\.)/" },
+    "editTipsAction": { "message": "可通过“导入”按钮导入TXT文件，或编辑后点击“保存”生效。" },
+    "aboutDescription": { "message": "这是一个轻量级广告拦截插件，支持开关控制和自定义规则。你可以拦截特定域名，也可以设置例外规则以放行必要内容。由qyhua开发，版本1.0。" },
+    "aboutContact": { "message": "有问题或建议？请联系Email：qyhua0@hotmail.com" }
+   
   }
