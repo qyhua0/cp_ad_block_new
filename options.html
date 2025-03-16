@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title data-i18n="appName"></title>
   <style>
@@ -12,7 +13,8 @@
       --shadow-color: rgba(0, 0, 0, 0.06);
     }
 
-    html, body {
+    html,
+    body {
       height: 100%;
       margin: 0;
       padding: 0;
@@ -23,7 +25,8 @@
 
     body {
       display: flex;
-      min-height: 600px; /* 设置一个最小高度 */
+      min-height: 600px;
+      /* 设置一个最小高度 */
       overflow: hidden;
     }
 
@@ -33,7 +36,8 @@
       background-color: #ffffff;
       border-right: 1px solid var(--border-color);
       box-shadow: 2px 0 10px var(--shadow-color);
-      flex-shrink: 0; /* 防止收缩 */
+      flex-shrink: 0;
+      /* 防止收缩 */
       position: relative;
       height: 100%;
       display: flex;
@@ -75,7 +79,8 @@
       box-shadow: 0 0 15px var(--shadow-color);
       position: relative;
       height: 100%;
-      overflow-y: auto; /* 允许内容区域滚动 */
+      overflow-y: auto;
+      /* 允许内容区域滚动 */
     }
 
     .content section {
@@ -87,8 +92,13 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .content section.active {
@@ -103,6 +113,14 @@
       font-weight: 600;
       border-bottom: 2px solid var(--light-gray);
       padding-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: var(--text-color);
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-weight: 500;
     }
 
     /* 开关页面样式 */
@@ -209,20 +227,265 @@
       line-height: 1.8;
       margin: 15px 0;
     }
+
+/* 搜索引擎选项样式 */
+.search-engines {
+  margin-top: 25px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.search-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.search-option:hover {
+  background-color: rgba(93, 156, 89, 0.05);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.search-option label {
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.count-display {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.blocked-count {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  min-width: 30px;
+  text-align: center;
+}
+
+.reset-count-btn {
+  padding: 3px 8px;
+  border: 1px solid var(--border-color);
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+
+.reset-count-btn:hover {
+  background-color: #e0e0e0;
+}
+
+
+
+
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.about-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.about-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.about-card h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  font-size: 18px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 10px;
+}
+
+.github-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.github-link:hover {
+  background-color: var(--primary-hover);
+}
+
+
   </style>
+
+<link rel="icon" type="image/png" href="images/icon16.png">
 </head>
+
 <body>
   <div class="sidebar">
     <ul>
       <li data-section="toggle" class="active" data-i18n="toggleMenu">Switch</li>
       <li data-section="edit" data-i18n="editAdList">Edit Rules</li>
+      <li data-section="search" data-i18n="searchMenu">Search Engines</li>
       <li data-section="about" data-i18n="aboutMenu">About</li>
     </ul>
   </div>
   <div class="content">
-    <section id="toggle" class="active">
+
+
+    <!-- <section id="toggle" class="active">
       <h1 data-i18n="toggleMenu">Switch</h1>
       <button id="toggleButton"></button>
+    </section> -->
+    <section id="toggle" class="active">
+      <h1 data-i18n="toggleMenu">Switch</h1>
+      <div class="tips">
+        <p data-i18n="toggleTipsIntro">Toggle the extension on and off with the button below. When enabled, the extension will filter ad content from search results based on your settings.</p>
+      </div>
+      <button id="toggleButton"></button>
+    </section>
+
+
+    <section id="search">
+      <h1 data-i18n="searchMenu">Search Engines</h1>
+      <div class="tips">
+        <p data-i18n="searchTipsIntro">Control which search engines to filter ad content from:</p>
+      </div>
+      <div class="search-engines">
+        
+        <!-- <div class="search-option">
+          <label class="switch">
+            <input type="checkbox" id="baiduEnabled" checked>
+            <span class="slider"></span>
+          </label>
+          <label for="baiduEnabled" data-i18n="baiduOption">Baidu Search</label>
+        </div> -->
+
+        <div class="search-option">
+          <label class="switch">
+            <input type="checkbox" id="baiduEnabled" checked>
+            <span class="slider"></span>
+          </label>
+          <label for="baiduEnabled" data-i18n="baiduOption">Baidu Search</label>
+          <div class="count-display">
+            <span class="blocked-count" id="baiduCount">0</span>
+            <button class="reset-count-btn" data-engine="baidu" data-i18n="resetCount">Reset</button>
+          </div>
+        </div>
+
+
+        <div class="search-option">
+          <label class="switch">
+            <input type="checkbox" id="googleEnabled" checked>
+            <span class="slider"></span>
+          </label>
+          <label for="googleEnabled" data-i18n="googleOption">Google Search</label>
+          <div class="count-display">
+            <span class="blocked-count" id="googleCount">0</span>
+            <button class="reset-count-btn" data-engine="google" data-i18n="resetCount">Reset</button>
+          </div>
+        </div>
+
+        <div class="search-option">
+          <label class="switch">
+            <input type="checkbox" id="bingEnabled" checked>
+            <span class="slider"></span>
+          </label>
+          <label for="bingEnabled" data-i18n="bingOption">Bing Search</label>
+          <div class="count-display">
+            <span class="blocked-count" id="bingCount">0</span>
+            <button class="reset-count-btn" data-engine="bing" data-i18n="resetCount">Reset</button>
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <h2 data-i18n="searchCustom">Custom Filter Settings</h2>
+      <div class="search-engines">
+        <div class="search-option">
+          <label class="switch">
+            <input type="checkbox" id="customFiltersEnabled">
+            <span class="slider"></span>
+          </label>
+          <label for="customFiltersEnabled" data-i18n="customFiltersOption">Enable Custom Ad Keywords</label>
+        </div>
+        <textarea id="customAdWords" placeholder="Enter custom ad keywords to filter, one per line"
+          style="width: 100%; margin-top: 15px; height: 100px; padding: 10px; border-radius: 6px; border: 1px solid var(--border-color);"></textarea>
+      </div>
+      <div class="button-container">
+        <button id="saveSearchSettings" data-i18n="saveSearchSettings">Save Settings</button>
+      </div>
     </section>
     <section id="edit">
       <h1 data-i18n="editAdList">Edit Rules</h1>
@@ -243,12 +506,32 @@
         <input type="file" id="importFile" accept=".txt" style="display: none;">
       </div>
     </section>
+
     <section id="about">
-      <h1 data-i18n="aboutMenu">About</h1>
-      <p data-i18n="aboutDescription"></p>
+  <h1 data-i18n="aboutMenu">About</h1>
+  <div class="tips">
+    <p data-i18n="aboutDescription"></p>
+  </div>
+  
+  <div class="about-container">
+   
+
+    <div class="about-card">
+      <h2 data-i18n="githubTitle">GitHub Repository</h2>
+      <p data-i18n="githubInfo"></p>
+      <a href="https://github.com/qyhua0/cp_ad_block_new" target="_blank" class="github-link" id="openGithub" data-i18n="openGithub">View on GitHub</a>
+    </div>
+
+    <div class="about-card">
+      <h2 data-i18n="contactTitle">Contact Information</h2>
       <p data-i18n="aboutContact"></p>
-    </section>
+    
+    </div>
+  
+  </div>
+</section>
   </div>
   <script src="options.js"></script>
 </body>
+
 </html>

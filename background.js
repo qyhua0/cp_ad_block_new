@@ -1,16 +1,15 @@
 // 默认广告规则
 const defaultRules = [
-    {
-      id: 1,
-      priority: 1,
-      action: { type: 'block' },
-      condition: {
-        urlFilter: '||example-ads.com^',
-        resourceTypes: ['script', 'image']
-      }
+  {
+    id: 1,
+    priority: 1,
+    action: { type: 'block' },
+    condition: {
+      urlFilter: '||example-ads.com^',
+      resourceTypes: ['script', 'image']
     }
-  ];
-
+  }
+];
 
 
 // 默认拦截域名列表
@@ -114,64 +113,7 @@ const defaultAdList = [
 ];
 
 
-  
-  // 初始化规则 不支持第三方允许规则 @@
-  function updateRules_20250306(isEnabled, customAdList = []) {
-    const rules = isEnabled ? [...defaultRules, ...customAdList.map((url, index) => ({
-      id: index + 2, // 从2开始，避免与默认规则冲突
-      priority: 1,
-      action: { type: 'block' },
-      condition: {
-        urlFilter: url, // 直接使用格式化后的URL
-        resourceTypes: ['script', 'image', 'stylesheet', 'main_frame', 'sub_frame']
-      }
-    }))] : [];
-  
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: Array.from({ length: defaultRules.length + customAdList.length }, (_, i) => i + 1),
-      addRules: rules
-    });
-  }
-
-
-   // 初始化规则 增加兼容支持第3方允许规则标识@@
-function updateRules(isEnabled, customAdList = []) {
-    const rules = isEnabled ? [
-      ...defaultRules,
-      ...customAdList.map((url, index) => {
-        const isException = url.startsWith('@@');
-        const cleanUrl = isException ? url.slice(2) : url;
-        return {
-          id: index + 2,
-          priority: isException ? 2 : 1, // 例外优先级更高
-          action: { type: isException ? 'allow' : 'block' },
-          condition: {
-            urlFilter: cleanUrl,
-            resourceTypes: ['script', 'image', 'stylesheet', 'main_frame', 'sub_frame']
-          }
-        };
-      })
-    ] : [];
-  
-    chrome.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: Array.from({ length: defaultRules.length + customAdList.length }, (_, i) => i + 1),
-      addRules: rules
-    });
-  }
-  
-  // 安装时加载初始状态
-  chrome.runtime.onInstalled.addListener(() => {
-    chrome.storage.sync.get(['isEnabled', 'customAdList'], (data) => {
-      const isEnabled = data.isEnabled !== false; // 默认启用
-      const customAdList = data.customAdList || [];
-      updateRules(isEnabled, customAdList);
-    });
-  });
-
-
-
-
-  // 更新拦截规则
+// 更新拦截规则
 function updateRules(isEnabled, customAdList = []) {
   const rules = isEnabled ? [
     ...defaultRules,
@@ -192,16 +134,30 @@ function updateRules(isEnabled, customAdList = []) {
   });
 }
 
-//new 插件安装时设置默认数据
+//插件安装时设置默认数据
 chrome.runtime.onInstalled.addListener((details) => {
   if (details.reason === "install") {
     // 新安装时设置默认拦截列表和启用状态
-    chrome.storage.sync.set({ 
-      customAdList: defaultAdList, 
-      isEnabled: true 
+    chrome.storage.sync.set({
+      customAdList: defaultAdList,
+      isEnabled: true
     }, () => {
       updateRules(true, defaultAdList);
     });
+
+
+    // 默认搜索引擎设置
+    chrome.storage.sync.get(["baiduEnabled", "googleEnabled", "bingEnabled"], (data) => {
+      const defaults = {};
+      if (data.baiduEnabled === undefined) defaults.baiduEnabled = true;
+      if (data.googleEnabled === undefined) defaults.googleEnabled = true;
+      if (data.bingEnabled === undefined) defaults.bingEnabled = true;
+      if (Object.keys(defaults).length > 0) {
+        chrome.storage.sync.set(defaults);
+      }
+    });
+
+
   } else if (details.reason === "update") {
     // 更新时保留用户数据，不覆盖
     chrome.storage.sync.get(["isEnabled", "customAdList"], (data) => {
@@ -211,13 +167,43 @@ chrome.runtime.onInstalled.addListener((details) => {
 });
 
 
-  
-  // 监听消息
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.action === 'updateRules') {
-      chrome.storage.sync.get('customAdList', (data) => {
-        const customAdList = data.customAdList || [];
-        updateRules(message.isEnabled, customAdList);
-      });
+
+// 监听消息
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === 'updateRules') {
+    chrome.storage.sync.get('customAdList', (data) => {
+      const customAdList = data.customAdList || [];
+      updateRules(message.isEnabled, customAdList);
+    });
+  } else if (message.action === "updateSearchFilters") {
+    // 更新搜索引擎过滤设置
+    console.log("Search filters updated:", message.searchSettings);
+    if (Object.keys(message.searchSettings).length > 0) {
+      chrome.storage.sync.set(message.searchSettings);
     }
-  });
+    sendResponse({ success: true });
+  } else if(message.action === "updateOptions"){
+    //let data={k:key,v:newCount,type:'from_engine'};
+    //chrome.runtime.sendMessage({ action: "updateOptions", data });
+    console.log("---background接收到的数据(updateOptions)：", message.data);
+
+    // 发送消息给选项页
+    chrome.runtime.sendMessage({ action: "updateUI", data: message.data }, (response) => {
+      if (chrome.runtime.lastError) {
+        console.warn("消息发送失败：", chrome.runtime.lastError.message);
+      } else {
+        console.log("接收到的响应：", response);
+      }
+    });
+  }
+
+
+  return true; // 指示异步响应
+
+});
+
+
+// 当扩展图标被点击时的操作
+chrome.action.onClicked.addListener(() => {
+  chrome.runtime.openOptionsPage();
+});

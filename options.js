@@ -1,3 +1,53 @@
+ // Display blocked count statistics
+ function displayBlockedCounts() {
+  const engines = ['baidu', 'google', 'bing'];
+  
+  engines.forEach(engine => {
+    const countKey = 'ad_hidden_count_' + engine;
+
+    chrome.storage.sync.get(countKey, function(data) {
+      console.log(countKey,data);
+      const count = data[countKey] || 0;
+      const countElement = document.getElementById(engine + 'Count');
+      
+      if (countElement) {
+        countElement.textContent = count;
+      }
+    });
+
+  });
+}
+
+// Add event listeners for reset buttons
+function setupResetButtons() {
+  const resetButtons = document.querySelectorAll('.reset-count-btn');
+  
+  resetButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const engine = this.getAttribute('data-engine');
+      resetBlockedCount(engine);
+    });
+  });
+}
+
+
+function resetBlockedCount(engine) {
+  const countKey = 'ad_hidden_count_' + engine;
+  
+  const resetData = {};
+  resetData[countKey] = 0;
+  
+  chrome.storage.sync.set(resetData, function() {
+    const countElement = document.getElementById(engine + 'Count');
+  
+    if (countElement) {
+      countElement.textContent = '0';
+    }
+  });
+}
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   // 获取所有必要的DOM元素
   const adList = document.getElementById("adList");
@@ -8,14 +58,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("toggleButton");
   const sidebarItems = document.querySelectorAll(".sidebar li");
   const contentSections = document.querySelectorAll(".content section");
+  
+  // 获取新增的搜索引擎控制元素
+  const baiduEnabled = document.getElementById("baiduEnabled");
+  const googleEnabled = document.getElementById("googleEnabled");
+  const bingEnabled = document.getElementById("bingEnabled");
+  const customFiltersEnabled = document.getElementById("customFiltersEnabled");
+  const customAdWords = document.getElementById("customAdWords");
+  const saveSearchSettings = document.getElementById("saveSearchSettings");
 
-  // 检查元素是否正确获取
-  if (!adList || !saveButton || !exportButton || !importButton || !importFile || !toggleButton) {
-    console.error("One or more elements are missing:", {
-      adList, saveButton, exportButton, importButton, importFile, toggleButton
-    });
-    return;
-  }
+  // 调试时用 检查元素是否正确获取
+  // if (!adList || !saveButton || !exportButton || !importButton || !importFile || !toggleButton) {
+  //   console.error("One or more elements are missing:", {
+  //     adList, saveButton, exportButton, importButton, importFile, toggleButton
+  //   });
+  //   return;
+  // }
 
   // 设置多语言文本
   document.querySelectorAll("[data-i18n]").forEach(element => {
@@ -26,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
       console.warn("Missing data-i18n attribute on element:", element);
     }
   });
+
   const placeholderKey = adList.getAttribute("data-i18n-placeholder");
   if (placeholderKey) {
     adList.placeholder = chrome.i18n.getMessage(placeholderKey);
@@ -56,6 +115,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return url;
     }).join("\n");
   });
+
+  // 加载搜索引擎设置
+  loadSearchEngineSettings();
 
   // 切换菜单
   sidebarItems.forEach(item => {
@@ -108,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
   importButton.addEventListener("click", () => {
     importFile.click();
   });
+
   importFile.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -128,4 +191,101 @@ document.addEventListener("DOMContentLoaded", () => {
       reader.readAsText(file);
     }
   });
+
+  // 新增：搜索引擎设置保存
+    saveSearchSettings.addEventListener("click", () => {
+      saveSearchEngineSettings();
+    });
+
+
+// Call these functions when the page loads
+displayBlockedCounts();
+setupResetButtons();
+
+
+
+});
+
+// 加载保存的搜索引擎设置
+function loadSearchEngineSettings() {
+  chrome.storage.sync.get([
+    'baiduEnabled', 
+    'googleEnabled', 
+    'bingEnabled',
+    'customFiltersEnabled',
+    'customAdWords'
+  ], function(data) {
+    // 获取相关DOM元素
+    const baiduEnabled = document.getElementById('baiduEnabled');
+    const googleEnabled = document.getElementById('googleEnabled');
+    const bingEnabled = document.getElementById('bingEnabled');
+    const customFiltersEnabled = document.getElementById('customFiltersEnabled');
+    const customAdWords = document.getElementById('customAdWords');
+    
+    // 确保元素存在
+    if (baiduEnabled) {
+      baiduEnabled.checked = data.baiduEnabled !== undefined ? data.baiduEnabled : true;
+    }
+    
+    if (googleEnabled) {
+      googleEnabled.checked = data.googleEnabled !== undefined ? data.googleEnabled : true;
+    }
+    
+    if (bingEnabled) {
+      bingEnabled.checked = data.bingEnabled !== undefined ? data.bingEnabled : true;
+    }
+    
+    if (customFiltersEnabled) {
+      customFiltersEnabled.checked = data.customFiltersEnabled !== undefined ? 
+        data.customFiltersEnabled : false;
+    }
+    
+    if (customAdWords) {
+      customAdWords.value = data.customAdWords || '';
+    }
+  });
+}
+
+// 保存搜索引擎设置
+function saveSearchEngineSettings() {
+  const baiduEnabled = document.getElementById('baiduEnabled');
+  const googleEnabled = document.getElementById('googleEnabled');
+  const bingEnabled = document.getElementById('bingEnabled');
+  const customFiltersEnabled = document.getElementById('customFiltersEnabled');
+  const customAdWords = document.getElementById('customAdWords');
+  
+  if (!baiduEnabled || !googleEnabled || !bingEnabled || !customFiltersEnabled || !customAdWords) {
+    console.error("One or more search engine control elements are missing");
+    return;
+  }
+  
+  const settings = {
+    baiduEnabled: baiduEnabled.checked,
+    googleEnabled: googleEnabled.checked,
+    bingEnabled: bingEnabled.checked,
+    customFiltersEnabled: customFiltersEnabled.checked,
+    customAdWords: customAdWords.value
+  };
+  
+  chrome.storage.sync.set(settings, function() {
+    // 通知后台脚本更新搜索引擎过滤规则
+    chrome.runtime.sendMessage({ 
+      action: "updateSearchFilters", 
+      searchSettings: settings 
+    });
+    alert(chrome.i18n.getMessage("searchEngineSaveSuccess") || "Search engine settings saved successfully!");
+  });
+
+}
+
+
+
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "updateUI") {
+      console.log("---选项页收到数据：", message.data);
+      displayBlockedCounts();
+      sendResponse({ success: true });
+  }
+  return true; // 指示异步响应
 });
