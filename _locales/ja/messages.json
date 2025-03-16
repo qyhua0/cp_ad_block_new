@@ -1,0 +1,118 @@
+{
+  "appName": {
+    "message": "切り替え可能な広告ブロッカー",
+    "description": "拡張機能の名前"
+  },
+  "appDesc": {
+    "message": "カスタマイズ可能な広告ブロッカー",
+    "description": "拡張機能の説明"
+  },
+  "toggleEnable": {
+    "message": "広告ブロックを有効化",
+    "description": "広告ブロックを有効にするテキスト"
+  },
+  "toggleDisable": {
+    "message": "広告ブロックを無効化",
+    "description": "広告ブロックを無効にするテキスト"
+  },
+  "options": {
+    "message": "オプション",
+    "description": "機能オプション、カスタムルール、オフ時の挙動"
+  },
+  "editAdList": {
+    "message": "広告リストを編集",
+    "description": "広告リストを編集するリンク"
+  },
+  "optionsTitle": {
+    "message": "広告ブロックリストを編集",
+    "description": "オプションページのタイトル"
+  },
+  "saveButton": {
+    "message": "保存",
+    "description": "保存ボタンのテキスト"
+  },
+  "exportButton": {
+    "message": "TXTにエクスポート",
+    "description": "エクスポートボタンのテキスト"
+  },
+  "importButton": {
+    "message": "TXTからインポート",
+    "description": "インポートボタンのテキスト"
+  },
+  "placeholder": {
+    "message": "ブロックするドメインを1行ずつ入力してください (例: ad1.com)",
+    "description": "テキストエリアのプレースホルダー"
+  },
+  "toggleMenu": {
+    "message": "切り替え"
+  },
+  "toggleTipsIntro": {
+    "message": "下のボタンで拡張機能をオン・オフできます。有効にすると、設定に基づいて検索結果から広告コンテンツをフィルタリングします。"
+  },
+  "aboutMenu": {
+    "message": "概要"
+  },
+  "editTipsIntro": {
+    "message": "ブロックするドメインを1行ずつ入力してください。以下の形式がサポートされています："
+  },
+  "editTipsNormal": {
+    "message": "通常のドメイン：例 ad1.com"
+  },
+  "editTipsException": {
+    "message": "例外ルール：@@で始まる 例：@@analytics.itunes.apple.com"
+  },
+  "editTipsRegex": {
+    "message": "正規表現：/で囲む 例：/^(\\S+\\.)?counter(\\-|\\.)/"
+  },
+  "editTipsAction": {
+    "message": "TXTファイルからルールをインポートしたり、変更を保存して適用できます。"
+  },
+  "aboutDescription": {
+    "message": "これは、切り替え制御とカスタムルールをサポートする軽量な広告ブロッカープラグインです。特定のドメインをブロックしたり、必要なコンテンツを許可する例外を設定できます。"
+  },
+  "aboutContact": {
+    "message": "ご質問やご提案は以下までご連絡ください：メール: qyhua0@hotmail.com"
+  },
+  "githubInfo": {
+    "message": "GitHub オープンソースアドレス: https://github.com/qyhua0/cp_ad_block_new"
+  },
+  "searchMenu": {
+    "message": "検索エンジン"
+  },
+  "searchTipsIntro": {
+    "message": "広告コンテンツをフィルタリングする検索エンジンを選択してください："
+  },
+  "baiduOption": {
+    "message": "Baidu検索"
+  },
+  "googleOption": {
+    "message": "Google検索"
+  },
+  "bingOption": {
+    "message": "Bing検索"
+  },
+  "searchCustom": {
+    "message": "カスタムフィルター設定"
+  },
+  "customFiltersOption": {
+    "message": "カスタム広告キーワードを有効化"
+  },
+  "searchEngineSaveSuccess": {
+    "message": "検索エンジンの設定が正常に保存されました！"
+  },
+  "saveSearchSettings": {
+    "message": "設定を保存"
+  },
+  "resetCount": {
+    "message": "カウントをリセット"
+  },
+  "openGithub": {
+    "message": "GitHubで表示"
+  },
+  "githubTitle": {
+    "message": "GitHubリポジトリ"
+  },
+  "contactTitle": {
+    "message": "連絡先情報"
+  }
+}

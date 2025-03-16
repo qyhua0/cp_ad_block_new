@@ -1,57 +1,118 @@
 {
-    "appName": {
-      "message": "广告拦截器",
-      "description": "扩展程序名称"
-    },
-    "appDesc": {
-      "message": "一款可自定义的广告拦截工具",
-      "description": "扩展程序描述"
-    },
-    "toggleEnable": {
-      "message": "启用广告拦截",
-      "description": "启用广告拦截的文本"
-    },
-    "toggleDisable": {
-      "message": "禁用广告拦截",
-      "description": "禁用广告拦截的文本"
-    },
-    "editAdList": {
-      "message": "编辑广告列表",
-      "description": "编辑广告列表的链接"
-    },
-    "optionsTitle": {
-      "message": "编辑广告拦截列表",
-      "description": "选项页面标题"
-    },
-    "saveButton": {
-      "message": "保存",
-      "description": "保存按钮文本"
-    },
-    "exportButton": {
-      "message": "导出为TXT",
-      "description": "导出按钮文本"
-    },
-    "importButton": {
-      "message": "从TXT导入",
-      "description": "导入按钮文本"
-    },
-    "placeholder": {
-      "message": "输入要拦截的域名，每行一个域名（例如 ad1.com）",
-      "description": "文本框占位符"
-    },
+  "appName": {
+    "message": "广告拦截器",
+    "description": "扩展程序名称"
+  },
+  "appDesc": {
+    "message": "一款可自定义的广告拦截工具",
+    "description": "扩展程序描述"
+  },
+  "toggleEnable": {
+    "message": "启用广告拦截",
+    "description": "启用广告拦截的文本"
+  },
+  "toggleDisable": {
+    "message": "禁用广告拦截",
+    "description": "禁用广告拦截的文本"
+  },
+  "options": {
+    "message": "功能选项",
+    "description": "功能选项，自定义规则，开关关告拦截"
+  },
+  "editAdList": {
+    "message": "拦截规则",
+    "description": "广告设置功能控制设置"
+  },
+  "optionsTitle": {
+    "message": "编辑广告拦截列表",
+    "description": "选项页面标题"
+  },
+  "saveButton": {
+    "message": "保存",
+    "description": "保存按钮文本"
+  },
+  "exportButton": {
+    "message": "导出为TXT",
+    "description": "导出按钮文本"
+  },
+  "importButton": {
+    "message": "从TXT导入",
+    "description": "导入按钮文本"
+  },
+  "placeholder": {
+    "message": "输入要拦截的域名，每行一个域名（例如 ad1.com）",
+    "description": "文本框占位符"
+  },
+  "toggleMenu": {
+    "message": "开关"
+  },
+  "toggleTipsIntro": {
+    "message": "使用下面的按钮打开和关闭。启用后，扩展程序将根据您的设置从搜索结果中过滤请求中的广告域名实现过虑AD内容。"
+  },
+  "aboutMenu": {
+    "message": "关于"
+  },
+  "editTipsIntro": {
+    "message": "输入要拦截的域名，每行一个。支持以下格式："
+  },
+  "editTipsNormal": {
+    "message": "普通域名：例如 ad1.com"
+  },
+  "editTipsException": {
+    "message": "例外规则：以 @@ 开头，例如 @@analytics.itunes.apple.com"
+  },
+  "editTipsRegex": {
+    "message": "正则表达式：用 / 包裹，例如 /^(\\S+\\.)?counter(\\-|\\.)/"
+  },
+  "editTipsAction": {
+    "message": "可通过“导入”按钮导入TXT文件，或编辑后点击“保存”生效。"
+  },
+  "aboutDescription": {
+    "message": "这是一个轻量级广告拦截插件，支持开关控制和自定义规则。你可以拦截特定域名，也可以设置例外规则以放行必要内容，还可以针对不同的搜索引擎启用屏蔽带有广告的内容。"
+  },
+  "aboutContact": {
+    "message": "有问题或建议？请联系Email：qyhua0@hotmail.com"
+  },
+  "githubInfo": {
+    "message": "github开源地址：https://github.com/qyhua0/cp_ad_block_new"
+  },
+  "searchMenu": {
+    "message": "搜索引擎"
+  },
+  "searchTipsIntro": {
+    "message": "控制要从中过滤广告内容的搜索引擎："
+  },
+  "baiduOption": {
+    "message": "百度搜索"
+  },
+  "googleOption": {
+    "message": "谷歌搜索"
+  },
+  "bingOption": {
+    "message": "必应搜索"
+  },
+  "searchCustom": {
+    "message": "自定义过滤设置"
+  },
+  "customFiltersOption": {
+    "message": "启用自定义广告关键词"
+  },
+  "searchEngineSaveSuccess": {
+    "message": "搜索引擎设置成功保存了"
+  },
+  "saveSearchSettings": {
+    "message": "保存设置"
+  },
+  "resetCount": {
+    "message": "清空"
+  },
+  "openGithub":{
+    "message": "查看源码 GitHub"
+ },  "githubTitle":{
+  "message": "GitHub Repository"
+},
+"contactTitle":{
+   "message": "联系资料"
+}
 
-
-
-
-    "toggleMenu": { "message": "开关" },
-    "aboutMenu": { "message": "关于" },
-
-    "editTipsIntro": { "message": "输入要拦截的域名，每行一个。支持以下格式：" },
-    "editTipsNormal": { "message": "普通域名：例如 ad1.com" },
-    "editTipsException": { "message": "例外规则：以 @@ 开头，例如 @@analytics.itunes.apple.com" },
-    "editTipsRegex": { "message": "正则表达式：用 / 包裹，例如 /^(\\S+\\.)?counter(\\-|\\.)/" },
-    "editTipsAction": { "message": "可通过“导入”按钮导入TXT文件，或编辑后点击“保存”生效。" },
-    "aboutDescription": { "message": "这是一个轻量级广告拦截插件，支持开关控制和自定义规则。你可以拦截特定域名，也可以设置例外规则以放行必要内容。由qyhua开发，版本1.0。" },
-    "aboutContact": { "message": "有问题或建议？请联系Email：qyhua0@hotmail.com" }
-   
-  }
+}

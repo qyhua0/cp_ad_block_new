@@ -1,58 +1,118 @@
 {
-    "appName": {
-      "message": "Ad Blocker with Toggle",
-      "description": "The name of the extension"
-    },
-    "appDesc": {
-      "message": "A customizable ad blocker",
-      "description": "The description of the extension"
-    },
-    "toggleEnable": {
-      "message": "Enable Ad Blocking",
-      "description": "Text for enabling ad blocking"
-    },
-    "toggleDisable": {
-      "message": "Disable Ad Blocking",
-      "description": "Text for disabling ad blocking"
-    },
-    "editAdList": {
-      "message": "Edit Ad List",
-      "description": "Link to edit ad list"
-    },
-    "optionsTitle": {
-      "message": "Edit Ad Block List",
-      "description": "Title for options page"
-    },
-    "saveButton": {
-      "message": "Save",
-      "description": "Save button text"
-    },
-    "exportButton": {
-      "message": "Export to TXT",
-      "description": "Export button text"
-    },
-    "importButton": {
-      "message": "Import from TXT",
-      "description": "Import button text"
-    },
-    "placeholder": {
-      "message": "Enter domains to block, one per line (ad1.com)",
-      "description": "Textarea placeholder"
-    },
-
-
-
-
-        "toggleMenu": { "message": "Switch" },
-        "aboutMenu": { "message": "About" },
-
-        "editTipsIntro": { "message": "Enter domains to block, one per line. The following formats are supported:" },
-        "editTipsNormal": { "message": "Normal domain: e.g., ad1.com" },
-        "editTipsException": { "message": "Exception rule: starts with @@, e.g., @@analytics.itunes.apple.com" },
-        "editTipsRegex": { "message": "Regular expression: wrapped in /, e.g., /^(\\S+\\.)?counter(\\-|\\.)/" },
-        "editTipsAction": { "message": "You can import rules from a TXT file or save changes to take effect." },
-        "aboutDescription": { "message": "This is a lightweight ad blocker plugin that supports toggle control and custom rules. You can block specific domains or set exceptions to allow necessary content. Developed by qyhua, version 1.0." },
-        "aboutContact": { "message": "Questions or suggestions? Contact: email:qyhua0@hotmail.com" }
-      
-      
+  "appName": {
+    "message": "Ad Blocker with Toggle",
+    "description": "The name of the extension"
+  },
+  "appDesc": {
+    "message": "A customizable ad blocker",
+    "description": "The description of the extension"
+  },
+  "toggleEnable": {
+    "message": "Enable Ad Blocking",
+    "description": "Text for enabling ad blocking"
+  },
+  "toggleDisable": {
+    "message": "Disable Ad Blocking",
+    "description": "Text for disabling ad blocking"
+  },
+  "options": {
+    "message": "Options",
+    "description": "Functional options, custom rules, switch-off interception"
+  },
+  "editAdList": {
+    "message": "Edit Ad List",
+    "description": "Link to edit ad list"
+  },
+  "optionsTitle": {
+    "message": "Edit Ad Block List",
+    "description": "Title for options page"
+  },
+  "saveButton": {
+    "message": "Save",
+    "description": "Save button text"
+  },
+  "exportButton": {
+    "message": "Export to TXT",
+    "description": "Export button text"
+  },
+  "importButton": {
+    "message": "Import from TXT",
+    "description": "Import button text"
+  },
+  "placeholder": {
+    "message": "Enter domains to block, one per line (ad1.com)",
+    "description": "Textarea placeholder"
+  },
+  "toggleMenu": {
+    "message": "Switch"
+  },
+  "toggleTipsIntro": {
+    "message": "Toggle the extension on and off with the button below. When enabled, the extension will filter ad content from search results based on your settings."
+  },
+  "aboutMenu": {
+    "message": "About"
+  },
+  "editTipsIntro": {
+    "message": "Enter domains to block, one per line. The following formats are supported:"
+  },
+  "editTipsNormal": {
+    "message": "Normal domain: e.g., ad1.com"
+  },
+  "editTipsException": {
+    "message": "Exception rule: starts with @@, e.g., @@analytics.itunes.apple.com"
+  },
+  "editTipsRegex": {
+    "message": "Regular expression: wrapped in /, e.g., /^(\\S+\\.)?counter(\\-|\\.)/"
+  },
+  "editTipsAction": {
+    "message": "You can import rules from a TXT file or save changes to take effect."
+  },
+  "aboutDescription": {
+    "message": "This is a lightweight ad blocker plugin that supports toggle control and custom rules. You can block specific domains or set exceptions to allow necessary content."
+  },
+  "aboutContact": {
+    "message": "Questions or suggestions? Contact: email:qyhua0@hotmail.com"
+  },
+  "githubInfo": {
+    "message": "github open source address: https://github.com/qyhua0/cp_ad_block_new"
+  },
+  "searchMenu": {
+    "message": "Search Engines"
+  },
+  "searchTipsIntro": {
+    "message": "Control which search engines to filter ad content from:"
+  },
+  "baiduOption": {
+    "message": "Baidu Search"
+  },
+  "googleOption": {
+    "message": "Google Search"
+  },
+  "bingOption": {
+    "message": "Bing Search"
+  },
+  "searchCustom": {
+    "message": "Custom Filter Settings"
+  },
+  "customFiltersOption": {
+    "message": "Enable Custom Ad Keywords"
+  },
+  "searchEngineSaveSuccess": {
+    "message": "Search engine settings saved successfully!"
+  },
+  "saveSearchSettings": {
+    "message": "Save Settings"
+  },
+  "resetCount": {
+    "message": "resetCount"
+  },
+  "openGithub":{
+     "message": "View on GitHub"
+  },
+  "githubTitle":{
+     "message": "GitHub Repository"
+  },
+  "contactTitle":{
+     "message": "Contact Information"
   }
+}
